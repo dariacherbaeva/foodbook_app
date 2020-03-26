@@ -16,7 +16,7 @@ public class SignUpController {
     private SignUpService service;
 
 
-    @GetMapping("/signUp")
+    @GetMapping("/sign_up")
     public String getSignUpPage(Authentication authentication) {
         if (authentication != null) {
             return "redirect:/profile";
@@ -24,9 +24,9 @@ public class SignUpController {
         return "sign_up";
     }
 
-    @PostMapping("/signUp")
+    @PostMapping("/sign_up")
     public String signUp(SignUpDto form) {
         service.signUp(form);
-        return "redirect:/signUp";
+        return "redirect:/sign_up";
     }
 }
