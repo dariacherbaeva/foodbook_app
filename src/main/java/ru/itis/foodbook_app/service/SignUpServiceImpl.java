@@ -22,81 +22,6 @@ import java.util.concurrent.*;
 @Component
 public class SignUpServiceImpl implements SignUpService {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public ExecutorService executorService() {
-        return new ExecutorService() {
-            @Override
-            public void shutdown() {
-
-            }
-
-            @Override
-            public List<Runnable> shutdownNow() {
-                return null;
-            }
-
-            @Override
-            public boolean isShutdown() {
-                return false;
-            }
-
-            @Override
-            public boolean isTerminated() {
-                return false;
-            }
-
-            @Override
-            public boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
-                return false;
-            }
-
-            @Override
-            public <T> Future<T> submit(Callable<T> task) {
-                return null;
-            }
-
-            @Override
-            public <T> Future<T> submit(Runnable task, T result) {
-                return null;
-            }
-
-            @Override
-            public Future<?> submit(Runnable task) {
-                return null;
-            }
-
-            @Override
-            public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks) throws InterruptedException {
-                return null;
-            }
-
-            @Override
-            public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException {
-                return null;
-            }
-
-            @Override
-            public <T> T invokeAny(Collection<? extends Callable<T>> tasks) throws InterruptedException, ExecutionException {
-                return null;
-            }
-
-            @Override
-            public <T> T invokeAny(Collection<? extends Callable<T>> tasks, long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-                return null;
-            }
-
-            @Override
-            public void execute(Runnable command) {
-
-            }
-        };
-    }
-
     @Autowired
     private UsersRepository usersRepository;
 
@@ -124,6 +49,7 @@ public class SignUpServiceImpl implements SignUpService {
                 .role(Role.USER)
                 .createdAt(LocalDateTime.now())
                 .confirmCode(UUID.randomUUID().toString())
+                .age(form.getAge())
                 .build();
 
         usersRepository.save(user);

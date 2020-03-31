@@ -6,9 +6,9 @@
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder" style="background-image: url(&quot;/student-education.jpg&quot;);"></div>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" action="/sign_up" enctype="multipart/form-data" novalidate>
                 <h2 class="text-center"><strong>Sign up</strong></h2>
-                <div class="form-group"><input class="form-control" type="text" pattern="[a-zA-Z0-9]+" title="The Latin alphabet letters and numbers (username should be unique)." name="username" placeholder="Username"></div>
+                <div class="form-group"><input class="form-control" type="text" pattern="[a-zA-Z0-9]+" title="The Latin alphabet letters and numbers (username should be unique)." name="username" placeholder="Username" value="{{ }}"></div>
                 <div class="form-group"><input class="form-control" type="text" pattern="[a-zA-Z0-9]+"  title="The Latin alphabet letters and numbers." name="name" placeholder="Name"></div>
                 <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"> </div>
                 <div class="form-group"><input class="form-control" type="tel" name="phone" placeholder="Phone Number"></div>
