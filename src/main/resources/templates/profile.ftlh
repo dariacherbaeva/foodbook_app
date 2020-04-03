@@ -4,25 +4,12 @@
 
 <#macro content>
 <div align="center">
-    <p>${user.username}</p>
-    <p>${user.name}</p>
-    <p>${user.age}</p>
+    <p><b>Username: </b>${model.user.username}</p>
+    <p><b>Name: </b>${model.user.name}</p>
+    <p><b>Email: </b>${model.user.email}</p>
+    <p><b>Phone number: </b>${model.user.phone}</p>
+    <p><b>Age: </b>${model.user.age}</p>
 </div>
-
-<#list favorites as f>
-    <tr>
-        <p>${r.name}</p>
-        <p>${r.text}</p>
-        <p>${r.createdAt}</p>
-    <p><#if r.photoPath??>
-        <img src="${r.photoPath!}" width="200"/></p>
-        <p><button>
-            <a href="/post?id=${r.getId()}">
-                Open </a>
-        </button></p>
-    </#if>
-    </tr>
-</#list>
 
 </#macro>
 <@main/>
