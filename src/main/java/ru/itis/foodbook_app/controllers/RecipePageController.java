@@ -20,8 +20,10 @@ public class RecipePageController {
     public String getPostPage(@ModelAttribute("model") ModelMap model,
                               @RequestParam(value = "id") Long id) {
         if (id != null) {
-            model.addAttribute("recipe", recipeService.getRecipe(id));
+            model.addAttribute("recipe", recipeService.getRecipe(id).get());
             model.addAttribute("message", "No comments yet.");
+        } else {
+            model.addAttribute("message", "No such post!");
         }
     return "post";
     }
