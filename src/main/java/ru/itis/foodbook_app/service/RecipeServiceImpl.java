@@ -24,7 +24,6 @@ public class RecipeServiceImpl implements RecipeService {
         return recipesRepository.findById(id).map(recipe -> RecipeDto.builder()
                 .name(recipe.getName())
                 .text(recipe.getText())
-                .photoPath(recipe.getPhoto().getStorageFileName())
                 .build());
 
     }

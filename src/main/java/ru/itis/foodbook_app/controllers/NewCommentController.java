@@ -29,6 +29,6 @@ public class NewCommentController {
     @PostMapping("/new_comment")
     public String addComment(CommentDto form, @RequestParam Long id){
         newCommentService.addComment(form, id);
-        return "redirect:/post?=" + id;
+        return "redirect:/feed";
     }
 }

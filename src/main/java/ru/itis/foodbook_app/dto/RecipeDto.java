@@ -18,13 +18,11 @@ public class RecipeDto {
 
     protected String name;
     protected String text;
-    protected String photoPath;
 
     public static RecipeDto from(Recipe recipe) {
         return RecipeDto.builder()
                 .name(recipe.getName())
                 .text(recipe.getText())
-                .photoPath(recipe.getPhoto().getUrl())
                 .build();
     }
 

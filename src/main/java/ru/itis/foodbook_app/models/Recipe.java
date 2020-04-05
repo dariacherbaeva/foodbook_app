@@ -27,6 +27,6 @@ public class Recipe {
 
     @ManyToOne
     @JoinColumn(name = "file_info_id")
-    private FileInfo photo;
+    private FileInfo photo=null;
 
 }

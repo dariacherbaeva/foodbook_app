@@ -21,14 +21,20 @@
         </tr>
     </table>
 
+
     <form action="/new_comment" method="get">
         <input type="hidden" value="${model.recipe.id}" name="id"/>
         <button type="submit" class="btn btn-primary">New comment</button>
     </form>
+
     <table border="1" align="center">
-        <#if comments??>
-            <#list comments as c>
-        <tr><p>${c.authorId}</p></tr>
+        <#if model.comments??>
+            <#list model.comments as c>
+            <p><b>Author id: ${c.authorId}</b></p>
+            <form action="/profile" method="get">
+                <input type="hidden" value="${c.authorId}" name="id"/>
+                <button type="submit" class="btn btn-primary">Open user profile</button>
+            </form>
         <tr><p>${c.text}</p></tr>
             </#list>
         <#else>

@@ -6,13 +6,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itis.foodbook_app.models.FileInfo;
 import ru.itis.foodbook_app.repositories.FileInfoRepository;
+import ru.itis.foodbook_app.repositories.UsersRepository;
 import ru.itis.foodbook_app.utils.FileStorageUtil;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-
 
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
@@ -22,6 +21,9 @@ public class FileStorageServiceImpl implements FileStorageService {
 
     @Autowired
     private FileStorageUtil fileStorageUtil;
+
+    @Autowired
+    private UsersRepository usersRepository;
 
     @Override
     public String saveFile(MultipartFile file) {
@@ -33,6 +35,7 @@ public class FileStorageServiceImpl implements FileStorageService {
         fileStorageUtil.copyToStorage(file, fileInfo.getStorageFileName());
         // возвращаем имя файла - новое
         return fileInfo.getStorageFileName();
+
     }
 
     // получение файла по его урлу
@@ -44,11 +47,10 @@ public class FileStorageServiceImpl implements FileStorageService {
         // указываем Content-Type для ответа
         response.setContentType(file.getType());
         // получили инпут стрим файла на диске
-        InputStream inputStream = new FileInputStream(new File(file.getUrl()));
+        InputStream inputStream = new FileInputStream(new java.io.File(file.getUrl()));
         // скопировали файл в ответ
         org.apache.commons.io.IOUtils.copy(inputStream, response.getOutputStream());
         // пробрасываем буфер
         response.flushBuffer();
     }
 }
-

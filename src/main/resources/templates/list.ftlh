@@ -5,28 +5,33 @@
 
 <#macro content>
 <div align="center">
-<table border="1" align="center">
-    <#list recipes as r>
+    <table border="1" align="center">
+    <#list model.recipes as r>
         <tr>
             <p>${r.name}</p>
             <p>${r.text}</p>
             <p>${r.createdAt}</p>
         <p><#if r.photoPath??>
-            <img src="${r.photo.url!}" width="200"/></p>
+            <img src="${r.photoPath}" width="200"/></p>
         <p>
         </#if>
             <form name="my-form" action="/post" method="get">
                 <input type="hidden" value="${r.getId()}" name="id"/>
                 <button class="btn btn-primary" type="submit">Open post</button>
             </form>
+            <#if model.user??>
+                <#if r.authorId!=model.user.id>
+            <p>
             <form action="/favorite" method="post">
                 <input type="hidden" value="${r.getId()}" name="id">
                 <button type="submit" class="btn btn-primary">Add to favorite</button>
             </form>
+                </#if>
+            </#if>
             </p>
-</table>
         </tr>
     </#list>
+    </table>
 </div>
 </#macro>
 <@main/>

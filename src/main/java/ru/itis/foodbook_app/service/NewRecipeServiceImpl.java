@@ -46,19 +46,9 @@ public class NewRecipeServiceImpl implements NewRecipeService {
     public void addRecipe(RecipeDto form) {
         if (profileService.getCurrentUser().isPresent()) {
 
-            FileInfo picFile = FileInfo.builder()
-                    .originalFileName(form.getPhotoPath())
-                    .storageFileName(form.getPhotoPath())
-                    .url(fileStorageUtil.getStoragePath())
-                    .size(fileStorageUtil.sizeOf(fileStorageUtil.getStoragePath()))
-                    .type("image/jpg")
-                    .build();
-
-            fileInfoRepository.save(picFile);
             Recipe recipe = Recipe.builder()
                     .name(form.getName())
                     .text(form.getText())
-                    .photo(picFile)
                     .authorId(usersRepository.findByEmail(((UserDetails) SecurityContextHolder.getContext()
                             .getAuthentication().getPrincipal()).getUsername()).get().getId())
                     .createdAt(new Timestamp(System.currentTimeMillis()))
