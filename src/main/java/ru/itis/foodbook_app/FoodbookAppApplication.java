@@ -7,6 +7,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.itis.foodbook_app.service.RecipeService;
+import ru.itis.foodbook_app.service.RecipeServiceImpl;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +29,10 @@ public class FoodbookAppApplication {
     @Bean
     public ExecutorService executorService() {
         return Executors.newFixedThreadPool(20);
+    }
+
+    @Bean
+    public RecipeService recipeService() {return new RecipeServiceImpl();
     }
 
 

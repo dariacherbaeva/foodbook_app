@@ -22,8 +22,11 @@ public class Recipe {
 
     protected String name;
     protected String text;
-    protected Timestamp createdAt = new Timestamp(System.currentTimeMillis());
-    protected String photoPath="";
-    protected int authorId=0;
+    protected Timestamp createdAt;
+    protected Long authorId;
+
+    @ManyToOne
+    @JoinColumn(name = "file_info_id")
+    private FileInfo photo;
 
 }

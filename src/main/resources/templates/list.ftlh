@@ -14,11 +14,11 @@
             <img src="${r.photoPath!}" width="200"/></p>
         <p>
         </#if>
-<form name="my-form" action="getpost" method="post">
-    <input type="hidden" value="${r.getId()}" name="id"/>
-    <button class="btn btn-primary" type="submit">Open post</button>
-</form>
-        </p>
+            <form name="my-form" action="/post" method="get">
+                <input type="hidden" value="${r.getId()}" name="id"/>
+                <button class="btn btn-primary" type="submit">Open post</button>
+            </form>
+            </p>
 
         </tr>
     </#list>

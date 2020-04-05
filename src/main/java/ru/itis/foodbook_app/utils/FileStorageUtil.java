@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import ru.itis.foodbook_app.models.FileInfo;
 
-
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
@@ -26,6 +26,10 @@ public class FileStorageUtil {
     @SneakyThrows
     public void copyToStorage(MultipartFile file, String storageFileName) {
         Files.copy(file.getInputStream(), Paths.get(storagePath, storageFileName));
+    }
+
+    public long sizeOf(String filePath) {
+        return new File(filePath).length();
     }
 
     // принимает на вход файл в формате Multipart
@@ -65,4 +69,3 @@ public class FileStorageUtil {
         return newFileName + "." + extension;
     }
 }
-

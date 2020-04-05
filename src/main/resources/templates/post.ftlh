@@ -1,20 +1,20 @@
 <#include "base.ftlh"/>
 
-<#macro title>${recipe.getName()}</#macro>
+<#macro title>${model.recipe.name}</#macro>
 
 <#macro content>
 <div>
     <table border="1">
         <tr>
-            <td>${recipe.getName()}</td>
-            <td>${recipe.getText()}</td>
-            <td>${recipe.getCreatedAt()}</td>
-            <td><#if recipe.getPhotoPath()??>
-                <img src="${recipe.getPhotoPath()!}" width="200"/> </#if></td>
+            <td>${model.recipe.name}</td>
+            <td>${model.recipe.text}</td>
+            <td>${model.recipe.createdAt()}</td>
+            <td><#if model.recipe.photo.storageFileName??>
+                <img src="${model.recipe.photo.storageFileName!}" width="200"/> </#if></td>
         </tr>
     </table>
 
-    <a href="/new_comment?postId=${recipe.id}">New comment</a>
+    <a href="/new_comment?postId=${model.recipe.id}">New comment</a>
 
     <table border="1" align="center">
         <#if comments??>

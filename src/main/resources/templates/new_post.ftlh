@@ -4,7 +4,7 @@
 
 <#macro content>
 
- <form action="new" method="post" enctype="multipart/form-data">
+ <form action="/new" method="post" enctype="multipart/form-data">
      <h2 class="text-center"><strong>New recipe</strong></h2>
     <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name"></div>
     <div class="form-group"><textarea class="form-control" type="text" name="text" placeholder="Your recipe"></textarea></div>
