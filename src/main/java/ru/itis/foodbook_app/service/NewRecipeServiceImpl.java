@@ -43,7 +43,7 @@ public class NewRecipeServiceImpl implements NewRecipeService {
     UsersRepository usersRepository;
 
     @Override
-    public void addRecipe(RecipeDto form, @AuthenticationPrincipal User user) {
+    public void addRecipe(RecipeDto form) {
         if (profileService.getCurrentUser().isPresent()) {
 
             FileInfo picFile = FileInfo.builder()

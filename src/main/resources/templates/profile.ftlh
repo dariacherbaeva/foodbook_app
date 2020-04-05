@@ -10,6 +10,42 @@
     <p><b>Phone number: </b>${model.user.phone}</p>
     <p><b>Age: </b>${model.user.age}</p>
 </div>
+<div align="center"><p><b>My recipes:</b></p>
+    <#if model.recipes??>
+        <#list model.recipes as r>
+    <tr>
+        <p>${r.name}</p>
+        <p>${r.text}</p>
+        <p>${r.createdAt}</p>
+    <p><#if r.photoPath??>
+        <img src="${r.photoPath!}" width="200"/></p>
+        <p>
+        </#if>
+        <form name="my-form" action="/post" method="get">
+            <input type="hidden" value="${r.getId()}" name="id"/>
+            <button class="btn btn-primary" type="submit">Open post</button>
+        </form>
+        </p>
 
+    </tr>
+        </#list>
+    <#else>
+    <p>You have no recipes yet.</p>
+    </#if>
+</div>
+<div align="center">
+    <p><b>My favorites: </b></p>
+    <#if model.favorites??>
+    <#list model.favorites as f>
+           <p> <form name="my-form" action="/post" method="get">
+                <input type="hidden" value="${f.getRecipeId()}" name="id"/>
+                <button class="btn btn-primary" type="submit">Open post</button>
+            </form>
+        </p>
+    </#list>
+    <#else>
+        <p>You have no favorites yet.</p>
+    </#if>
+</div>
 </#macro>
 <@main/>

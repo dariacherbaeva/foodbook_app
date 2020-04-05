@@ -28,12 +28,7 @@ public class RecipeListController {
         return "list";
     }
 
-    @GetMapping("/new")
-    public String getRecipeForm(Authentication authentication) {
-        if (authentication == null) {
-            return "redirect:/login";
-        } else return "new_post";
-    }
+
 
 
 }

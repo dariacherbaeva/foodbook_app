@@ -24,7 +24,7 @@ public class RecipeDto {
         return RecipeDto.builder()
                 .name(recipe.getName())
                 .text(recipe.getText())
-                .photoPath(recipe.getPhoto().getStorageFileName())
+                .photoPath(recipe.getPhoto().getUrl())
                 .build();
     }
 

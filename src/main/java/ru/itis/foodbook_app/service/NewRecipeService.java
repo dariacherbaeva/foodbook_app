@@ -7,5 +7,5 @@ import ru.itis.foodbook_app.models.User;
 
 @Service
 public interface NewRecipeService {
-    void addRecipe(RecipeDto form, @AuthenticationPrincipal User user);
+    void addRecipe(RecipeDto form);
 }

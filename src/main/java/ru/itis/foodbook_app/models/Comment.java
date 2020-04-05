@@ -19,9 +19,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    protected int recipeId;
-    protected int authorId;
-    protected int recipientId = 0;
+    protected Long recipeId;
+    protected Long authorId;
     protected String text;
 
 

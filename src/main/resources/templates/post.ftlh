@@ -15,11 +15,16 @@
         <tr>
             <td>${model.recipe.name}</td>
             <td>${model.recipe.text}</td>
+            <td><#if model.recipe.photoPath??>
+                <img src="${model.recipe.photoPath}">
+            </#if></td>
         </tr>
     </table>
 
-    <a href="#">New comment</a>
-
+    <form action="/new_comment" method="get">
+        <input type="hidden" value="${model.recipe.id}" name="id"/>
+        <button type="submit" class="btn btn-primary">New comment</button>
+    </form>
     <table border="1" align="center">
         <#if comments??>
             <#list comments as c>

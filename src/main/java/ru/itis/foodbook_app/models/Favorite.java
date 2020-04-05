@@ -19,7 +19,7 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    protected int userId;
-    protected int recipeId;
+    protected Long userId;
+    protected Long recipeId;
 
 }

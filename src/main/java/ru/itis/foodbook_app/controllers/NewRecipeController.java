@@ -1,8 +1,10 @@
 package ru.itis.foodbook_app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.itis.foodbook_app.dto.RecipeDto;
 import ru.itis.foodbook_app.models.User;
@@ -14,9 +16,16 @@ public class NewRecipeController {
     @Autowired
     NewRecipeService newRecipeService;
 
+    @GetMapping("/new")
+    public String getRecipeForm(Authentication authentication) {
+        if (authentication == null) {
+            return "redirect:/login";
+        } else return "new_post";
+    }
+
     @PostMapping("/new")
-    public String addRecipe(RecipeDto form, @AuthenticationPrincipal User user) {
-            newRecipeService.addRecipe(form, user);
+    public String addRecipe(RecipeDto form) {
+        newRecipeService.addRecipe(form);
         return "new_post";
     }
 }
