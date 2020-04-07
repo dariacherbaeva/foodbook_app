@@ -1,16 +1,17 @@
 <#include "base.ftlh"/>
+<#import "spring.ftl" as spring/>
 
 <#macro title>Profile</#macro>
 
 <#macro content>
 <div align="center">
-    <p><b>Username: </b>${model.user.username}</p>
-    <p><b>Name: </b>${model.user.name}</p>
-    <p><b>Email: </b>${model.user.email}</p>
-    <p><b>Phone number: </b>${model.user.phone}</p>
-    <p><b>Age: </b>${model.user.age}</p>
+    <p><b><@spring.message 'profile.page.username'/>: </b>${model.user.username}</p>
+    <p><b><@spring.message 'profile.page.name'/>: </b>${model.user.name}</p>
+    <p><b><@spring.message 'profile.page.email'/>: </b>${model.user.email}</p>
+    <p><b><@spring.message 'profile.page.phone'/>: </b>${model.user.phone}</p>
+    <p><b><@spring.message 'profile.page.age'/>: </b>${model.user.age}</p>
 </div>
-<div align="center"><p><b>My recipes:</b></p>
+<div align="center"><p><b><@spring.message 'profile.page.my_recipes'/>:</b></p>
     <#if model.recipes??>
         <#list model.recipes as r>
     <tr>
@@ -23,28 +24,28 @@
         </#if>
         <form name="my-form" action="/post" method="get">
             <input type="hidden" value="${r.getId()}" name="id"/>
-            <button class="btn btn-primary" type="submit">Open post</button>
+            <button class="btn btn-primary" type="submit"><@spring.message 'open_post'/></button>
         </form>
         </p>
 
     </tr>
         </#list>
     <#else>
-    <p>You have no recipes yet.</p>
+    <p><@spring.message 'profile.page.my_no_recipes'/>.</p>
     </#if>
 </div>
 <div align="center">
-    <p><b>My favorites: </b></p>
+    <p><b><@spring.message 'profile.page.my_favorites'/>: </b></p>
     <#if model.favorites??>
     <#list model.favorites as f>
            <p> <form name="my-form" action="/post" method="get">
                 <input type="hidden" value="${f.getRecipeId()}" name="id"/>
-                <button class="btn btn-primary" type="submit">Open post</button>
+                <button class="btn btn-primary" type="submit"><@spring.message 'open_post'/></button>
             </form>
         </p>
     </#list>
     <#else>
-        <p>You have no favorites yet.</p>
+        <p><@spring.message 'profile.page.my_no_favorites'/>.</p>
     </#if>
 </div>
 </#macro>
