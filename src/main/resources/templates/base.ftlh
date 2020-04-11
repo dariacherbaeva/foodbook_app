@@ -24,9 +24,9 @@
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item" role="presentation"><img
                         src="images\bulb.png" style="width: 32px;"></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/new">Add Recipe</a>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/new"><@spring.message 'base.add'/></a>
                 </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/profile">Profile</a>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/profile"><@spring.message 'profile.page.title'/></a>
                 </li>
                 <li class="nav-item" role="presentation"></li>
             </ul></div>

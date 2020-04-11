@@ -1,7 +1,7 @@
 <#include "base.ftlh"/>
 <#import "spring.ftl" as spring/>
 
-<#macro title>Profile</#macro>
+<#macro title><@spring.message 'profile.page.title'/></#macro>
 
 <#macro content>
 <div align="center">

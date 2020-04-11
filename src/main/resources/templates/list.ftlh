@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring/>
 <#include "base.ftlh"/>
 
-<#macro title>Recipes Feed</#macro>
+<#macro title><@spring.message 'feed'/></#macro>
 
 <#macro content>
 <div align="center">
@@ -17,14 +17,14 @@
         </#if>
             <form name="my-form" action="/post" method="get">
                 <input type="hidden" value="${r.getId()}" name="id"/>
-                <button class="btn btn-primary" type="submit">Open post</button>
+                <button class="btn btn-primary" type="submit"><@spring.message 'open_post'/></button>
             </form>
             <#if model.user??>
                 <#if r.authorId!=model.user.id>
             <p>
             <form action="/favorite" method="post">
                 <input type="hidden" value="${r.getId()}" name="id">
-                <button type="submit" class="btn btn-primary">Add to favorite</button>
+                <button type="submit" class="btn btn-primary"><@spring.message 'add_favorite'/></button>
             </form>
                 </#if>
             </#if>

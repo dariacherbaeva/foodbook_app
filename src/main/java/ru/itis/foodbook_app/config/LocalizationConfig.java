@@ -4,7 +4,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.DefaultMessageCodesResolver;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.servlet.LocaleResolver;
@@ -15,15 +14,6 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 @Configuration
 public class LocalizationConfig implements WebMvcConfigurer {
-
-    // откуда читать ключи с языками
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages/messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
 
     // добавили в наше приложение перехватчик запросов для локализации
     @Override
@@ -50,6 +40,14 @@ public class LocalizationConfig implements WebMvcConfigurer {
         return localeChangeInterceptor;
     }
 
+    // откуда читать ключи с языками
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:messages/messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 
     @Override
     public MessageCodesResolver getMessageCodesResolver() {

@@ -4,7 +4,7 @@
     <#if model.recipe??>
         ${model.recipe.name}
     <#else>
-        Пост не найден!
+        <@spring.message 'no_post'/>
     </#if>
 </#macro>
 
@@ -24,7 +24,7 @@
 
     <form action="/new_comment" method="get">
         <input type="hidden" value="${model.recipe.id}" name="id"/>
-        <button type="submit" class="btn btn-primary">New comment</button>
+        <button type="submit" class="btn btn-primary"><@spring.message 'add_comment'/></button>
     </form>
 
     <table border="1" align="center">
@@ -33,7 +33,7 @@
             <p><b>Author id: ${c.authorId}</b></p>
             <form action="/profile" method="get">
                 <input type="hidden" value="${c.authorId}" name="id"/>
-                <button type="submit" class="btn btn-primary">Open user profile</button>
+                <button type="submit" class="btn btn-primary"><@spring.message 'profile.page.title'/></button>
             </form>
         <tr><p>${c.text}</p></tr>
             </#list>
