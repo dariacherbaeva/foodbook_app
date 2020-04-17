@@ -9,6 +9,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.itis.foodbook_app.handlers.WebSocketHandler;
+import ru.itis.foodbook_app.service.PostSearchService;
+import ru.itis.foodbook_app.service.PostSearchServiceImpl;
 import ru.itis.foodbook_app.service.RecipeService;
 import ru.itis.foodbook_app.service.RecipeServiceImpl;
 
@@ -37,6 +40,11 @@ public class FoodbookAppApplication {
     public RecipeService recipeService() {
         return new RecipeServiceImpl();
     }
+
+    @Bean
+    public PostSearchService postSearchService() {return new PostSearchServiceImpl();
+    }
+
 
 
     public static void main(String[] args) {

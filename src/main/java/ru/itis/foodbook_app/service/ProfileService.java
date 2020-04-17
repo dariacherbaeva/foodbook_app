@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface ProfileService {
     Optional<UserDto> getCurrentUser();
+    Optional<UserDto> getAdmin();
 }
