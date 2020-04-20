@@ -8,6 +8,10 @@
          <div class="form-group"><input class="form-control" type="password" name="password" pattern="[a-zA-Z0-9]+"
                                         title="The Latin alphabet letters and numbers." placeholder="Password"></div>
          <div class="form-group">
+             <label>
+                 <input type="checkbox" name="remember-me">Запомни меня
+             </label>
+             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
              <button class="btn btn-primary btn-block" type="submit">Log In</button>
          </div>
      </form>
