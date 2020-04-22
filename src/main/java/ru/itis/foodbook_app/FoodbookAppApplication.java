@@ -7,8 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 import ru.itis.foodbook_app.handlers.WebSocketHandler;
 import ru.itis.foodbook_app.service.PostSearchService;
 import ru.itis.foodbook_app.service.PostSearchServiceImpl;
@@ -42,9 +46,19 @@ public class FoodbookAppApplication {
     }
 
     @Bean
-    public PostSearchService postSearchService() {return new PostSearchServiceImpl();
+    public PostSearchService postSearchService() {
+        return new PostSearchServiceImpl();
     }
 
+    @Bean
+    public TaskScheduler taskScheduler() {
+        return new ConcurrentTaskScheduler();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 
     public static void main(String[] args) {

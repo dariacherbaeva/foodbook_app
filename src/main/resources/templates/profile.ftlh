@@ -11,6 +11,11 @@
     <p><b><@spring.message 'profile.page.phone'/>: </b>${model.user.phone}</p>
     <p><b><@spring.message 'profile.page.age'/>: </b>${model.user.age}</p>
 </div>
+<div align="center">
+    <form action="/logout">
+        <button class="btn btn-primary" type="submit"><@spring.message 'logout'/></button>
+    </form>
+</div>
 <div align="center"><p><b><@spring.message 'profile.page.my_recipes'/>:</b></p>
     <#if model.recipes??>
         <#list model.recipes as r>
@@ -37,13 +42,14 @@
 <div align="center">
     <p><b><@spring.message 'profile.page.my_favorites'/>: </b></p>
     <#if model.favorites??>
-    <#list model.favorites as f>
-           <p> <form name="my-form" action="/post" method="get">
+        <#list model.favorites as f>
+           <p>
+            <form name="my-form" action="/post" method="get">
                 <input type="hidden" value="${f.getRecipeId()}" name="id"/>
                 <button class="btn btn-primary" type="submit"><@spring.message 'open_post'/></button>
             </form>
         </p>
-    </#list>
+        </#list>
     <#else>
         <p><@spring.message 'profile.page.my_no_favorites'/>.</p>
     </#if>

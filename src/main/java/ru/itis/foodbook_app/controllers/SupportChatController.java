@@ -28,6 +28,7 @@ public class SupportChatController {
     @Autowired
     private UsersRepository usersRepository;
 
+
     @GetMapping("/support")
     public String getSupportPage(Model model, Authentication authentication) {
 
@@ -37,7 +38,7 @@ public class SupportChatController {
 
             model.addAttribute("adminEmail", profileService.getAdmin().get().getEmail());
 
-            if (user.getRole().equals(Role.ADMIN.name())) {
+            if (user.getRole() == Role.ADMIN) {
                 model.addAttribute("users", usersRepository.findAll());
             }
 

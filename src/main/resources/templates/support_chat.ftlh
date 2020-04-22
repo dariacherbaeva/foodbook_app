@@ -16,9 +16,9 @@
 <form class="form-control">
     <input class="form-control" placeholder="<@spring.message 'text'/>"/>
     <button class="button" onclick="
-            send(document.getElementById('message').value(), '${user.username}',
+            send(document.getElementById('message').value(), '${user.email}',
     <#if user.role == "ADMIN"> document.getElementById('receiver').value()
-    <#else> '${adminEmail}' </#if>)"><@spring.message 'send'/></button>
+    <#else> '${adminLogin}' </#if>)"><@spring.message 'send'/></button>
 </form>
 
 
