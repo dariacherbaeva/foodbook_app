@@ -1,6 +1,7 @@
 package ru.itis.foodbook_app.models;
 
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,8 @@ import javax.persistence.Id;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder()
+@Builder
+@Slf4j
 public class FileInfo {
 
     @Id

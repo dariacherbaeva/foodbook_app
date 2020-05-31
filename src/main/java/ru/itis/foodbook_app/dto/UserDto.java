@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
+import ru.itis.foodbook_app.models.Document;
 import ru.itis.foodbook_app.models.User;
 
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +27,14 @@ public class UserDto {
     protected String name;
     protected int age;
     private Long phone;
+
+    @OneToMany(mappedBy = "owner")
+    @Where(clause = "type = 'image/png'")
+    private List<Document> pngDocuments;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Document> documents;
+
 
     public static UserDto from(User user) {
         return UserDto.builder()
